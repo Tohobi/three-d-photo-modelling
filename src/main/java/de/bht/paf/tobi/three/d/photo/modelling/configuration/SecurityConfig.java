@@ -15,9 +15,10 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**").permitAll()
+                        .requestMatchers("/h2-console/**").permitAll() // Erlaubt den Zugriff auf die H2-Konsole
                         .anyRequest().authenticated())
-                .csrf(csrf -> csrf.disable())
+                .csrf(csrf -> csrf.disable()) // CSRF-Schutz für die H2-Konsole deaktivieren
+                .headers(headers -> headers.frameOptions(frame -> frame.disable())) // Für Frames erlauben
                 .httpBasic()
                 .and()
                 .build();

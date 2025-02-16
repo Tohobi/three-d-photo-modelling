@@ -19,7 +19,7 @@ create table if not exists rating (
     model_reference varchar(255)
 );
 
-create table if not exists appUser (
+create table if not exists app_user (
     id bigint auto_increment primary key,
     username varchar(255),
     password varchar(255),
