@@ -4,32 +4,23 @@ import de.bht.paf.tobi.three.d.photo.modelling.model.User;
 import de.bht.paf.tobi.three.d.photo.modelling.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
-@RestController
-@RequestMapping("/api/auth")
+@Controller
 public class AuthController {
 
-    @Autowired
-    private UserDetailsServiceImpl userDetailsService;
-
-    @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody Map<String, String> request) {
-        String username = request.get("username");
-        String password = request.get("password");
-
-        try {
-            User user = userDetailsService.registerUser(username, password);
-            return ResponseEntity.ok("Benutzer " + user.getUsername() + " erfolgreich registriert!");
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
+    @GetMapping("/login")
+    public String loginPage(Model model) {
+        return "login"; // sicherstellen, dass /login nicht auf sich selbst verweist
     }
 
-    @PostMapping("/login")
-    public ResponseEntity<String> login() {
-        return ResponseEntity.ok("Login erfolgreich!");
+    @GetMapping("/dashboard")
+    public String dashboard(Model model) {
+        model.addAttribute("message", "Willkommen im Dashboard!");
+        return "dashboard";
     }
 }

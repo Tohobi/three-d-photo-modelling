@@ -15,12 +15,18 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/h2-console/**").permitAll() // Erlaubt den Zugriff auf die H2-Konsole
+                        .requestMatchers("/h2-console/**", "/login", "/css/**", "/js/**").permitAll()
                         .anyRequest().authenticated())
-                .csrf(csrf -> csrf.disable()) // CSRF-Schutz für die H2-Konsole deaktivieren
-                .headers(headers -> headers.frameOptions(frame -> frame.disable())) // Für Frames erlauben
-                .httpBasic()
-                .and()
+                .formLogin(form -> form
+                        .loginPage("/login")
+                        .defaultSuccessUrl("/dashboard", true)
+                        .permitAll())
+                .logout(logout -> logout
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/login?logout")
+                        .permitAll())
+                .csrf(csrf -> csrf.disable()) // CSRF für H2-Konsole und Login deaktivieren
+                .headers(headers -> headers.frameOptions(frame -> frame.disable())) // für H2-Console Frames
                 .build();
     }
 
