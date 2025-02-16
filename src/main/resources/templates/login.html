@@ -7,6 +7,8 @@
 <body>
 <div class="login-container">
     <h2>🔐 Login</h2>
+
+    <!-- Login-Formular -->
     <form th:action="@{/login}" method="post">
         <div class="form-group">
             <label for="username">Benutzername:</label>
@@ -16,14 +18,27 @@
             <label for="password">Passwort:</label>
             <input type="password" id="password" name="password" required>
         </div>
-        <button type="submit">Anmelden</button>
+        <button type="submit" class="btn">Anmelden</button>
+
+        <!-- Fehlermeldungen Login -->
         <div th:if="${param.error}" class="error">
             ❌ Ungültige Anmeldedaten!
         </div>
         <div th:if="${param.logout}" class="success">
             ✅ Sie wurden erfolgreich abgemeldet.
         </div>
+
+        <!-- Erfolgsnachricht nach Registrierung -->
+        <div th:if="${registrationSuccess}" class="success">
+            ✅ <span th:text="${registrationSuccess}"></span>
+        </div>
     </form>
+
+    <!-- Button zur Registrierungsseite -->
+    <div class="register-link">
+        <p>Noch keinen Account? 👋</p>
+        <a class="btn register-btn" th:href="@{/register}">Registrieren</a>
+    </div>
 </div>
 </body>
 </html>

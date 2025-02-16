@@ -1,36 +1,83 @@
+/* 🌐 Global Styles */
 body {
     font-family: 'Arial', sans-serif;
     background: linear-gradient(135deg, #6e45e2, #88d3ce);
     height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin: 0;
     color: #333;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.login-container {
+/* 🖼️ Container Styles */
+.dashboard-container, .project-container, .login-container {
     background: #fff;
     padding: 2rem;
-    border-radius: 10px;
+    border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    margin: 5% auto;
+    min-width: 500px;
     text-align: center;
-    width: 300px;
 }
 
-.login-container h2 {
-    margin-bottom: 1.5rem;
-    color: #6e45e2;
+/* 📂 Dashboard Styles */
+.button-container {
+    margin-top: 2rem;
 }
 
+.btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    margin: 1rem;
+    background-color: #6e45e2;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #5534a5;
+}
+
+.logout {
+    background-color: #e45b6e;
+}
+
+.logout:hover {
+    background-color: #c13a4d;
+}
+
+/* 📋 Projektlisten-Styling */
+.project-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+}
+
+.project-list li {
+    background: #f4f4f4;
+    border-left: 5px solid #6e45e2;
+    margin: 1rem 0;
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: left;
+}
+
+/* 🆔 Login/Registrierungsformular */
 .form-group {
-    margin-bottom: 1rem;
+    margin: 1rem 0;
     text-align: left;
 }
 
 .form-group label {
     display: block;
     margin-bottom: 0.5rem;
+    font-weight: bold;
 }
 
 .form-group input {
@@ -38,24 +85,36 @@ body {
     padding: 0.5rem;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 1rem;
+    box-sizing: border-box;
 }
 
-button {
-    width: 100%;
-    padding: 0.7rem;
+.btn {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #6e45e2;
+    color: white;
     border: none;
     border-radius: 5px;
-    background: #6e45e2;
-    color: white;
     cursor: pointer;
-    font-size: 1rem;
-    margin-top: 1rem;
-    transition: background 0.3s;
+    text-decoration: none;
 }
 
-button:hover {
-    background: #5534a5;
+.btn:hover {
+    background-color: #5534a5;
+}
+
+.register-btn {
+    background-color: #45a645;
+}
+
+.register-btn:hover {
+    background-color: #357b35;
+}
+
+/* 🎯 Feedback-Meldungen */
+.success {
+    color: green;
+    margin-top: 1rem;
 }
 
 .error {
@@ -63,15 +122,12 @@ button:hover {
     margin-top: 1rem;
 }
 
-.success {
-    color: green;
-    margin-top: 1rem;
+.divider {
+    margin: 2rem 0;
+    border: 1px solid #ccc;
 }
 
-.dashboard-container {
-    text-align: center;
-    background: #fff;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+/* ➡️ Button-Bereich für Registrierung */
+.register-link {
+    margin-top: 2rem;
 }
