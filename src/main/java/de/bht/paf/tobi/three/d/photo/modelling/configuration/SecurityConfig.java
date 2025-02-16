@@ -4,6 +4,8 @@ import de.bht.paf.tobi.three.d.photo.modelling.service.UserDetailsServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -25,8 +27,8 @@ public class SecurityConfig {
                         .logoutUrl("/logout")
                         .logoutSuccessUrl("/login?logout")
                         .permitAll())
-                .csrf(csrf -> csrf.disable()) // CSRF für H2-Konsole und Login deaktivieren
-                .headers(headers -> headers.frameOptions(frame -> frame.disable())) // für H2-Console Frames
+                .csrf(AbstractHttpConfigurer::disable) // CSRF für H2-Konsole und Login deaktivieren
+                .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable)) // für H2-Console Frames
                 .build();
     }
 
