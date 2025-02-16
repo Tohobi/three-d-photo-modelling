@@ -21,9 +21,9 @@ create table if not exists rating (
 
 create table if not exists appUser (
     id bigint auto_increment primary key,
-    user_name varchar(255),
+    username varchar(255),
     password varchar(255),
-    mail varchar(255)
+    role varchar(255)
 );
 
 create table if not exists project (

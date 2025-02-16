@@ -10,11 +10,14 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String userName;
+    @Column(unique = true, nullable = false)
+    private String username;
 
+    @Column(nullable = false)
     private String password;
 
-    private String mail;
+    @Column(nullable = false)
+    private String role = "USER";
 
     public Integer getId() {
         return id;
@@ -25,11 +28,11 @@ public class User {
     }
 
     public String getUserName() {
-        return userName;
+        return username;
     }
 
     public void setUserName(String userName) {
-        this.userName = userName;
+        this.username = username;
     }
 
     public String getPassword() {
@@ -40,11 +43,11 @@ public class User {
         this.password = password;
     }
 
-    public String getMail() {
-        return mail;
+    public String getRole() {
+        return role;
     }
 
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setRole(String role) {
+        this.role = role;
     }
 }
