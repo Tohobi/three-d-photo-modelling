@@ -22,7 +22,7 @@ public class AuthController {
 
         try {
             User user = userDetailsService.registerUser(username, password);
-            return ResponseEntity.ok("Benutzer " + user.getUserName() + " erfolgreich registriert!");
+            return ResponseEntity.ok("Benutzer " + user.getUsername() + " erfolgreich registriert!");
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }

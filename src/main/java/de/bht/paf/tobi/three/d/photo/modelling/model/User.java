@@ -1,6 +1,7 @@
 package de.bht.paf.tobi.three.d.photo.modelling.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "appUser")
@@ -10,13 +11,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(unique = true, nullable = false)
+    @NotEmpty
     private String username;
 
-    @Column(nullable = false)
+    @NotEmpty
     private String password;
 
-    @Column(nullable = false)
+    @NotEmpty
     private String role = "USER";
 
     public Integer getId() {
@@ -27,11 +28,11 @@ public class User {
         this.id = id;
     }
 
-    public String getUserName() {
+    public String getUsername() {
         return username;
     }
 
-    public void setUserName(String userName) {
+    public void setUsername(String username) {
         this.username = username;
     }
 

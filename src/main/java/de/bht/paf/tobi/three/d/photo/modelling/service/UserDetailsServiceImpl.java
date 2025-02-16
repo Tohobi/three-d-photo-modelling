@@ -24,7 +24,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             throw new RuntimeException("Benutzername existiert bereits!");
         }
         User user = new User();
-        user.setUserName(username);
+        user.setUsername(username);
         user.setPassword(passwordEncoder.encode(password));
         return userRepository.save(user);
     }
@@ -33,7 +33,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("Benutzer nicht gefunden: " + username));
-        UserBuilder builder = org.springframework.security.core.userdetails.User.withUsername(user.getUserName());
+        UserBuilder builder = org.springframework.security.core.userdetails.User.withUsername(user.getUsername());
         builder.password(user.getPassword());
         builder.roles(user.getRole());
         return builder.build();
