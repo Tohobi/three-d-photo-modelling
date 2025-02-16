@@ -99,20 +99,22 @@ public class ProjectController {
         Project project = projectRepository.findById(id).orElseThrow();
         User user = userRepository.findByUsername(principal.getName()).orElseThrow();
 
-        // Überprüfen, ob bereits bewertet wurde
+        // Überprüfen, ob bereits eine Bewertung existiert
         Optional<Rating> existingRating = ratingRepository.findByUserAndProject(user, project);
         if (existingRating.isPresent()) {
             return "redirect:/projects/others?error=already_rated";
         }
 
-        // Version initialisieren
-        newRating.setVersion(0L);
+        // Kein Version-Wert nötig – Hibernate kümmert sich darum
         newRating.setProject(project);
         newRating.setUser(user);
-        ratingRepository.save(newRating);
+
+        // Speichern mit einer neuen Transaktion
+        ratingRepository.saveAndFlush(newRating);
 
         return "redirect:/projects/others";
     }
+
 
     @GetMapping("/{projectId}/rate")
     public String showRatingForm(@PathVariable Long projectId, Principal principal, Model model) {
@@ -144,6 +146,8 @@ public class ProjectController {
             return "rating-error";
         }
 
+        // Version explizit setzen
+        rating.setVersion(0L);
         rating.setUser(user);
         rating.setProject(project);
         ratingRepository.save(rating);
