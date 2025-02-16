@@ -1,6 +1,5 @@
 package de.bht.paf.tobi.three.d.photo.modelling.configuration;
 
-import de.bht.paf.tobi.three.d.photo.modelling.service.UserDetailsServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
