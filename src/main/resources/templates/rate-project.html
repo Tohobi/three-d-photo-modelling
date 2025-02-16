@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Projekt bewerten</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div class="rate-container">
+    <h2>⭐ Projekt bewerten</h2>
+    <form th:action="@{/projects/rate/{id}(id=${project.id})}" th:object="${newRating}" method="post">
+        <div class="form-group">
+            <label for="rating">Bewertung (1–5):</label>
+            <input type="number" id="rating" name="rating" min="1" max="5" required>
+        </div>
+
+        <div class="form-group">
+            <label for="comment">Kommentar:</label>
+            <textarea id="comment" name="comment" rows="4" placeholder="Hinterlasse einen Kommentar..."></textarea>
+        </div>
+
+        <button type="submit" class="btn">💾 Bewertung abgeben</button>
+    </form>
+</div>
+
+</body>
+</html>

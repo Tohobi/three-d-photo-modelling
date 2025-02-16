@@ -2,25 +2,25 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Andere Projekte</title>
-    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
 <div class="project-container">
     <h2>🌐 Projekte anderer Benutzer</h2>
 
-    <div th:if="${projects.isEmpty()}">
-        <p>❗ Keine fremden Projekte gefunden.</p>
-    </div>
-
-    <ul class="project-list" th:unless="${projects.isEmpty()}">
+    <!-- 📝 Liste der Projekte -->
+    <ul class="project-list">
         <li th:each="project : ${projects}">
-            <h3 th:text="${project.title}">Projektname</h3>
-            <p th:text="${project.description}">Projektbeschreibung</p>
-            <small>👤 Besitzer: <span th:text="${project.owner.username}">Benutzername</span></small>
+            <a th:href="@{/projects/rate/{id}(id=${project.id})}" class="project-link">
+                <strong th:text="${project.name}"></strong> von <span th:text="${project.user.username}"></span>
+            </a>
         </li>
     </ul>
 
-    <a class="btn" href="/dashboard">⬅️ Zurück zum Dashboard</a>
+    <!-- 🏠 Zurück zum Dashboard -->
+    <div class="button-container">
+        <a class="btn" th:href="@{/dashboard}">🏠 Zurück zum Dashboard</a>
+    </div>
 </div>
 </body>
 </html>

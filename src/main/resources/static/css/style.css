@@ -12,7 +12,7 @@ body {
 }
 
 /* 🖼️ Container Styles */
-.dashboard-container, .project-container, .login-container {
+.dashboard-container, .project-container, .login-container, .edit-container, .rate-container {
     background: #fff;
     padding: 2rem;
     border-radius: 15px;
@@ -130,4 +130,35 @@ body {
 /* ➡️ Button-Bereich für Registrierung */
 .register-link {
     margin-top: 2rem;
+}
+
+/* 🆕 Button für neues Projekt */
+.add-project-btn {
+    background-color: #28a745;  /* Grün für "Hinzufügen" */
+    color: #fff;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 2rem;
+    transition: background-color 0.3s;
+}
+
+.add-project-btn:hover {
+    background-color: #218838;
+    transform: translateY(-3px);
+}
+
+.rating-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+}
+
+.rating-list li {
+    background: #f4f4f4;
+    border-left: 5px solid #45a645;
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    border-radius: 10px;
 }

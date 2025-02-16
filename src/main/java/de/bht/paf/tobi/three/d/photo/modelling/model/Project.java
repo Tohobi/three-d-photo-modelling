@@ -1,54 +1,44 @@
 package de.bht.paf.tobi.three.d.photo.modelling.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotEmpty;
+
+import java.util.List;
 
 @Entity
-@Table(name = "project")
 public class Project {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
-    @NotEmpty
-    private String projectName;
+    private String name;
 
+    @Column(length = 1000)
     private String description;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private User owner;
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    public Integer getId() {
-        return id;
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Rating> ratings;
+
+    public List<Rating> getRatings() { return ratings; }
+
+    public double getAverageRating() {
+        if (ratings == null || ratings.isEmpty()) return 0.0;
+        return ratings.stream().mapToInt(Rating::getScore).average().orElse(0.0);
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public String getProjectName() {
-        return projectName;
-    }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 
-    public void setProjectName(String projectName) {
-        this.projectName = projectName;
-    }
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public User getOwner() {
-        return owner;
-    }
-
-    public void setOwner(User owner) {
-        this.owner = owner;
-    }
+    public User getUser() { return user; }
+    public void setUser(User user) { this.user = user; }
 }

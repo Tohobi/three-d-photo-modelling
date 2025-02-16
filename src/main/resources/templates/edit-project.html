@@ -1,0 +1,29 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body>
+<div class="edit-container">
+    <h2>🛠️ Projekt bearbeiten</h2>
+
+    <form th:action="@{/projects/edit/{id}(id=${project.id})}" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="name">Projektname:</label>
+            <input type="text" id="name" name="name" th:value="${project.name}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="file">📷 Fotos hinzufügen:</label>
+            <input type="file" id="file" name="files" multiple>
+        </div>
+
+        <button type="submit" class="btn">💾 Speichern</button>
+    </form>
+
+    <div class="button-container">
+        <a href="/projects/my" class="btn logout">⬅️ Zurück</a>
+    </div>
+</div>
+</body>
+</html>

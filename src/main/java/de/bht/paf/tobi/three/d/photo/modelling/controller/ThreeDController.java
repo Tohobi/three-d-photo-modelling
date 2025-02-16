@@ -20,8 +20,8 @@ public class ThreeDController {
     }
 
     @GetMapping("/")
-    public String hello() {
-        return "Hello World!";
+    public String goToLogin() {
+        return "login";
     }
 
     @GetMapping("/photos")
