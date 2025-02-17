@@ -7,7 +7,7 @@ create table if not exists app_user (
 
 create table if not exists project (
     id bigint auto_increment primary key,
-    project_name varchar(255),
+    name varchar(255),
     description varchar(255),
     user_id bigint,
     foreign key (user_id) references app_user(id) on delete cascade
