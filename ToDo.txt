@@ -1,0 +1,5 @@
+- Beim anlegen eines Projektes wird der Name in der DB gesetzt, es gibt aber eine weitere Spalte Project_Name die Null ist
+- Fotos hochladen in DB geht noch nicht (Funktion und Buttons eigentlich vorhanden, aber wird nichts hochgeladen)
+- Projekt bewerten geht nicht, läuft in Fehler
+- eigentliche Funktion der App zur 3D-Modellierung fehlt noch komplett
+-
